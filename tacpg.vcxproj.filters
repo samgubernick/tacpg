@@ -18,12 +18,6 @@
     <ClCompile Include="src\entry_point.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\menu\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\menu\game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\input\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,14 +54,17 @@
     <ClCompile Include="src\biography\age.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\menu\top\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\menu\game\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\menu\game\input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\menu\game.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\menu\main.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\input\main.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -123,6 +120,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\biography\age.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\menu\top\main.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\menu\game\main.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\menu\game\input.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\menu\game\action.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -11,7 +11,7 @@ namespace cur	= topx::menu;
 
 namespace {
 	constexpr auto const MATCH = 0;
-	constexpr auto const MENU_OPTIONS = "E exit || Z play || X load || C save";
+	constexpr auto const MENU_OPTIONS = "[A] play		[S] save		[D] load		[E] exit";
 	constexpr auto const START_GAME = "___---Starting new game---___";
 	constexpr auto const RESUME_GAME = "___---Resuming game---___";
 	constexpr auto const LOAD = "___---Loading---___";
@@ -32,14 +32,14 @@ cur::Main::Action cur::Main::now(std::string const & key) {
 	if (key.compare("e") == MATCH) {
 		return Action::exit;
 	}
-	else if (key.compare("z") == MATCH) {
+	else if (key.compare("a") == MATCH) {
 		return Action::play;
 	}
-	else if (key.compare("x") == MATCH) {
-		return Action::load;
-	}
-	else if (key.compare("c") == MATCH) {
+	else if (key.compare("s") == MATCH) {
 		return Action::save;
+	}
+	else if (key.compare("d") == MATCH) {
+		return Action::load;
 	}
 	else {
 		return Action::ignore;

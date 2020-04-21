@@ -15,7 +15,10 @@ namespace cur	= topx::menu;
 
 namespace {
 	constexpr auto const MATCH = 0;
-	constexpr auto const MENU_OPTIONS = "A turn left || D turn right || W forward || S backward || Z menu";
+	constexpr auto const MENU_OPTIONS = "[A] map		[S] character		[D] main menu";
+	//constexpr auto const MENU_OPTIONS = "[A] bio		[S] actions		[Q] switch prev		[W] switch next		[D] game menu";
+	//constexpr auto const MENU_OPTIONS = "[A] move		[S] attack		[Q] collect		[E] items		[W] drop		[D character menu]";
+	//constexpr auto const MENU_OPTIONS = "[A] turn left		[D] turn right		[W] forward		[S] backward		[Z] character menu";
 	constexpr auto const TURN_LEFT = "Turning left";
 	constexpr auto const TURN_RIGHT = "Turning right";
 	constexpr auto const MOVE_FORWARD = "Moving forward";

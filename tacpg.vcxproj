@@ -29,8 +29,9 @@
     <ClCompile Include="src\input\main.cpp" />
     <ClCompile Include="src\map\cell.cpp" />
     <ClCompile Include="src\map\main.cpp" />
-    <ClCompile Include="src\menu\game.cpp" />
-    <ClCompile Include="src\menu\main.cpp" />
+    <ClCompile Include="src\menu\game\input.cpp" />
+    <ClCompile Include="src\menu\game\main.cpp" />
+    <ClCompile Include="src\menu\top\main.cpp" />
     <ClCompile Include="src\character\main.cpp" />
     <ClCompile Include="src\output\age.cpp" />
     <ClCompile Include="src\output\name.cpp" />
@@ -43,6 +44,8 @@
     <ClInclude Include="include\character\stats.hpp" />
     <ClInclude Include="include\biography\gender.hpp" />
     <ClInclude Include="include\biography\name.hpp" />
+    <ClInclude Include="include\menu\game\action.hpp" />
+    <ClInclude Include="include\menu\game\input.hpp" />
     <ClInclude Include="include\output\age.hpp" />
     <ClInclude Include="include\data\month.hpp" />
     <ClInclude Include="include\game\main.hpp" />
@@ -52,8 +55,8 @@
     <ClInclude Include="include\map\cell.hpp" />
     <ClInclude Include="include\map\i_map_item.hpp" />
     <ClInclude Include="include\map\main.hpp" />
-    <ClInclude Include="include\menu\game.hpp" />
-    <ClInclude Include="include\menu\main.hpp" />
+    <ClInclude Include="include\menu\game\main.hpp" />
+    <ClInclude Include="include\menu\top\main.hpp" />
     <ClInclude Include="include\character\main.hpp" />
     <ClInclude Include="include\output\name.hpp" />
     <ClInclude Include="include\utility\math.hpp" />
