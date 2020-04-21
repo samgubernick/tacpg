@@ -29,6 +29,7 @@
     <ClCompile Include="src\input\main.cpp" />
     <ClCompile Include="src\map\cell.cpp" />
     <ClCompile Include="src\map\main.cpp" />
+    <ClCompile Include="src\menu\borders.cpp" />
     <ClCompile Include="src\menu\game\character\input.cpp" />
     <ClCompile Include="src\menu\game\character\main.cpp" />
     <ClCompile Include="src\menu\game\input.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="src\menu\top\input.cpp" />
     <ClCompile Include="src\menu\top\main.cpp" />
     <ClCompile Include="src\character\main.cpp" />
+    <ClCompile Include="src\menu\values.cpp" />
     <ClCompile Include="src\output\age.cpp" />
     <ClCompile Include="src\output\name.cpp" />
   </ItemGroup>
@@ -49,6 +51,7 @@
     <ClInclude Include="include\character\stats.hpp" />
     <ClInclude Include="include\biography\gender.hpp" />
     <ClInclude Include="include\biography\name.hpp" />
+    <ClInclude Include="include\menu\borders.hpp" />
     <ClInclude Include="include\menu\game\action.hpp" />
     <ClInclude Include="include\menu\game\character\action.hpp" />
     <ClInclude Include="include\menu\game\character\input.hpp" />

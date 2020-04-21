@@ -10,8 +10,28 @@ namespace topx	= sam::tacpg;
 namespace cur	= topx::menu::top;
 
 cur::Input::Input(topx::menu::top::Main & menu)
-	: menu(menu) {
+	: menu(menu)
+	, keyExit("e")
+	, keyLoad("l")
+	, keyPlay("p")
+	, keySave("s") {
 
+}
+
+std::string const & cur::Input::getKeyExit() const {
+	return keyExit;
+}
+
+std::string const & cur::Input::getKeyLoad() const {
+	return keyLoad;
+}
+
+std::string const & cur::Input::getKeyPlay() const {
+	return keyPlay;
+}
+
+std::string const & cur::Input::getKeySave() const {
+	return keySave;
 }
 
 void cur::Input::receiveInput(std::string const & input) {
@@ -45,16 +65,16 @@ void cur::Input::receiveInput(std::string const & input) {
 //*****private****
 
 cur::Action cur::Input::getAction(std::string const & key) const {
-	if (key.compare("e") == values::MATCH) {
+	if (key.compare(keyExit) == values::MATCH) {
 		return Action::exit;
 	}
-	else if (key.compare("a") == values::MATCH) {
+	else if (key.compare(keyPlay) == values::MATCH) {
 		return Action::play;
 	}
-	else if (key.compare("s") == values::MATCH) {
+	else if (key.compare(keySave) == values::MATCH) {
 		return Action::save;
 	}
-	else if (key.compare("d") == values::MATCH) {
+	else if (key.compare(keyLoad) == values::MATCH) {
 		return Action::load;
 	}
 	else {

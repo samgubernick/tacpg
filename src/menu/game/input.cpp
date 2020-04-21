@@ -10,8 +10,23 @@ namespace topx	= sam::tacpg;
 namespace cur	= topx::menu::game;
 
 cur::Input::Input(topx::menu::game::Main & menu)
-	: menu(menu) {
+	: menu(menu)
+	, keyCharacter("c")
+	, keyMap("m")
+	, keyTopMenu("e") {
 
+}
+
+std::string const & cur::Input::getKeyCharacter() const {
+	return keyCharacter;
+}
+
+std::string const & cur::Input::getKeyMap() const {
+	return keyMap;
+}
+
+std::string const & cur::Input::getKeyTopMenu() const {
+	return keyTopMenu;
 }
 
 void cur::Input::receiveInput(std::string const & input) {
@@ -41,13 +56,13 @@ void cur::Input::receiveInput(std::string const & input) {
 //*****private****
 
 cur::Action cur::Input::getAction(std::string const & key) const {
-	if (key.compare("a") == values::MATCH) {
+	if (key.compare(keyMap) == values::MATCH) {
 		return Action::openMap;
 	}
-	else if (key.compare("s") == values::MATCH) {
+	else if (key.compare(keyCharacter) == values::MATCH) {
 		return Action::openCharacter;
 	}
-	if (key.compare("d") == values::MATCH) {
+	if (key.compare(keyTopMenu) == values::MATCH) {
 		return Action::pause;
 	}
 	else {

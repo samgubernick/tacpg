@@ -16,9 +16,17 @@ namespace sam {
 				public:
 					Input(Main & menu);
 
+					std::string const & getKeyExit() const;
+					std::string const & getKeyLoad() const;
+					std::string const & getKeyPlay() const;
+					std::string const & getKeySave() const;
 					void receiveInput(std::string const & input);
 				private:
 					Main & menu;
+					std::string keyExit;
+					std::string keyLoad;
+					std::string keyPlay;
+					std::string keySave;
 
 					Action getAction(std::string const & key) const;
 				};

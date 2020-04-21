@@ -2,6 +2,8 @@
 #include "menu/top/main.hpp"
 
 #include "input/main.hpp"
+#include "menu/borders.hpp"
+#include "menu/values.hpp"
 
 #include <iostream>
 #include <string>
@@ -10,13 +12,18 @@ namespace topx	= sam::tacpg;
 namespace cur	= topx::menu::top;
 
 namespace {
-	constexpr auto const MATCH = 0;
-	constexpr auto const MENU = "			main menu			";
-	constexpr auto const MENU_OPTIONS = "[A] play		[S] save		[D] load		[E] exit";
-	constexpr auto const START_GAME = "___---Starting new game---___";
-	constexpr auto const RESUME_GAME = "___---Resuming game---___";
-	constexpr auto const LOAD = "___---Loading---___";
-	constexpr auto const SAVE = "___---Saving---___";
+	constexpr auto const MENU			= "main menu";
+	constexpr auto const ITEM_EXIT		= "exit";
+	constexpr auto const ITEM_LOAD		= "load";
+	constexpr auto const ITEM_PLAY		= "play";
+	constexpr auto const ITEM_SAVE		= "save";
+	constexpr auto const ITEM_SPACER	= "		";
+	constexpr auto const START_GAME		= "Starting new game";
+	constexpr auto const RESUME_GAME	= "Resuming game";
+	constexpr auto const LOAD			= "Loading";
+	constexpr auto const SAVE			= "Saving";
+	//constexpr auto const S = "";
+	//constexpr auto const S = "";
 }
 
 cur::Main::Main(topx::input::Main & inputListener)
@@ -26,8 +33,12 @@ cur::Main::Main(topx::input::Main & inputListener)
 
 }
 
+void cur::Main::close() {
+	borders::showBottom();
+}
+
 void cur::Main::open() {
-	std::cout << std::endl << std::endl << MENU << std::endl;
+	borders::showTop(MENU);
 	displayOptions();
 }
 
@@ -44,21 +55,23 @@ void cur::Main::invalidInput() {
 }
 
 void cur::Main::load() {
-	std::cout << std::endl << std::endl << LOAD << std::endl << std::endl;
+	std::cout << LOAD << std::endl << std::endl;
 
 }
 
 void cur::Main::play() {
 	switch (game.getState()) {
 		case tacpg::game::Main::State::none: {
-			std::cout << std::endl << std::endl << START_GAME << std::endl << std::endl;
+			std::cout << START_GAME << std::endl;
+			close();
 			game.getMenu().newGame();
 			game.getMenu().open();
 			inputListener.setListener(game.getMenu().getInputListener());
 			break;
 		}
 		case tacpg::game::Main::State::paused: {
-			std::cout << std::endl << std::endl << RESUME_GAME << std::endl << std::endl;
+			std::cout << RESUME_GAME << std::endl;
+			close();
 			game.getMenu().open();
 			inputListener.setListener(game.getMenu().getInputListener());
 			break;
@@ -70,7 +83,7 @@ void cur::Main::play() {
 }
 
 void cur::Main::save() {
-	std::cout << std::endl << std::endl << SAVE << std::endl << std::endl;
+	std::cout << SAVE << std::endl << std::endl;
 
 }
 
@@ -79,5 +92,10 @@ void cur::Main::save() {
 //*****private****
 
 void cur::Main::displayOptions() {
-	std::cout << std::endl << std::endl << MENU_OPTIONS << std::endl << ">> ";
+	std::cout
+		<< "[" << input.getKeyPlay() << "] " << ITEM_PLAY << ITEM_SPACER
+		<< "[" << input.getKeyLoad() << "] " << ITEM_LOAD << ITEM_SPACER
+		<< "[" << input.getKeySave() << "] " << ITEM_SAVE << ITEM_SPACER
+		<< "[" << input.getKeyExit() << "] " << ITEM_EXIT << ITEM_SPACER
+		<< std::endl << ">> ";
 }

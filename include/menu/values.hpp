@@ -6,7 +6,7 @@ namespace sam {
 	namespace tacpg {
 		namespace menu {
 			namespace values {
-				auto const MATCH = 0;
+				extern int const	MATCH;
 			}
 		}
 	}

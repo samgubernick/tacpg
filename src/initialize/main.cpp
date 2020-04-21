@@ -13,7 +13,7 @@ cur::Main::Main() {
 }
 
 void cur::Main::now() {
-	std::cout << "Welcome to the game!" << std::endl;
+	std::cout << "		Tactical Action Command Prompt Game" << std::endl;
 
 	auto menu = topx::menu::top::Main(input);
 	menu.open();

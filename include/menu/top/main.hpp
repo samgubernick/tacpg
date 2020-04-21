@@ -20,6 +20,7 @@ namespace sam {
 				public:
 					Main(input::Main & inputListener);
 
+					void close();
 					Input & getInputListener();
 					void open();
 
