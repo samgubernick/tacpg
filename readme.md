@@ -10,3 +10,6 @@ environment interactions, other turn events, and character biographies.
 
 std::cin sends player input to an input class that forwards it to the current menu, which then
 processes it and displays the result using std::cout.
+
+The map uses std::vector for the cells and another vector for the cell contents. The content
+class uses an interface for cell event callbacks.
