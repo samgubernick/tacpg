@@ -1,13 +1,13 @@
 
 #include "output/name.hpp"
 
-#include "data/gender.hpp"
-#include "data/name.hpp"
+#include "biography/gender.hpp"
+#include "biography/name.hpp"
 
 namespace topx	= sam::tacpg;
 namespace cur	= topx::output;
 
-std::string cur::name(topx::data::Name const & name) {
+std::string cur::name(topx::biography::Name const & name) {
 	std::string result;
 	result.append(name.first).append(" ")
 		.append(name.middle).append(" ")
@@ -16,15 +16,15 @@ std::string cur::name(topx::data::Name const & name) {
 	return std::move(result);
 }
 
-std::string cur::name(topx::data::Name const & name, topx::data::Gender const & gender) {
+std::string cur::name(topx::biography::Name const & name, topx::biography::Gender const & gender) {
 	std::string result;
 
 	switch (gender) {
-		case data::Gender::female: {
+		case biography::Gender::female: {
 			result.append("Ms. ");
 			break;
 		}
-		case data::Gender::male: {
+		case biography::Gender::male: {
 			result.append("Mr. ");
 			break;
 		}

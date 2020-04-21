@@ -32,11 +32,11 @@ topx::menu::Game & cur::Main::getMenu() {
 void cur::Main::resetGame() {
 	map.clear();
 
-	map.setSize(topx::map::Main::Size::small);
+	map.setSize(map::Main::Size::small);
 	currentCharacter = &characters.emplace_back();
 	auto & character = *currentCharacter;
 	auto & bio = character.getBio();
 	bio.setName("Tim", "Roberts");
-	bio.setGender(data::Gender::male);
-	bio.setAge(character::Age(1960, data::Month::aug, 20));
+	bio.setGender(biography::Gender::male);
+	bio.setAge(biography::Age(1960, data::Month::aug, 20));
 }

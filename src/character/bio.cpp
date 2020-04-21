@@ -8,27 +8,27 @@ cur::Bio::Bio() {
 
 }
 
-cur::Age const & cur::Bio::getAge() const {
+topx::biography::Age const & cur::Bio::getAge() const {
 	return birthdate.getAge();
 }
 
-topx::data::Gender cur::Bio::getGender() const {
+topx::biography::Gender cur::Bio::getGender() const {
 	return gender;
 }
 
-topx::data::Name const & cur::Bio::getName() const {
+topx::biography::Name const & cur::Bio::getName() const {
 	return name;
 }
 
-void cur::Bio::setAge(cur::Age age) {
+void cur::Bio::setAge(topx::biography::Age age) {
 	this->birthdate.setAge(age);
 }
 
-void cur::Bio::setGender(topx::data::Gender gender) {
+void cur::Bio::setGender(topx::biography::Gender gender) {
 	this->gender = gender;
 }
 
-void cur::Bio::setName(topx::data::Name name) {
+void cur::Bio::setName(topx::biography::Name name) {
 	this->name = name;
 }
 

@@ -1,7 +1,7 @@
 
 #include "output/age.hpp"
 
-#include "character/age.hpp"
+#include "biography/age.hpp"
 
 namespace topx	= sam::tacpg;
 namespace cur	= topx::output;
@@ -52,7 +52,7 @@ namespace {
 	}
 }
 
-std::string cur::age(topx::character::Age const & age) {
+std::string cur::age(topx::biography::Age const & age) {
 	std::string result;
 
 	result.append(getMonthName(age.month)).append(" ")

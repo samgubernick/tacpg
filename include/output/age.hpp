@@ -6,11 +6,11 @@
 
 namespace sam {
 	namespace tacpg {
-		namespace character {
+		namespace biography {
 			struct Age;
 		}
 		namespace output {
-			extern std::string age(character::Age const & age);
+			extern std::string age(biography::Age const & age);
 		}
 	}
 }

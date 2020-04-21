@@ -8,15 +8,15 @@ cur::Birthdate::Birthdate() {
 
 }
 
-cur::Birthdate::Birthdate(Age age) {
+cur::Birthdate::Birthdate(topx::biography::Age age) {
 	setAge(age);
 }
 
-cur::Age const & cur::Birthdate::getAge() const {
+topx::biography::Age const & cur::Birthdate::getAge() const {
 	return age;
 }
 
-void cur::Birthdate::setAge(cur::Age age) {
+void cur::Birthdate::setAge(topx::biography::Age age) {
 	this->age.year = age.year;
 	this->age.month = age.month;
 
