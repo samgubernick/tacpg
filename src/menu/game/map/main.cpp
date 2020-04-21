@@ -1,9 +1,9 @@
 
-#include "menu/game/main.hpp"
+#include "menu/game/map/main.hpp"
 
 #include "game/main.hpp"
 #include "input/main.hpp"
-#include "menu/top/main.hpp"
+#include "menu/game/main.hpp"
 #include "output/age.hpp"
 #include "output/name.hpp"
 
@@ -11,22 +11,20 @@
 #include <string>
 
 namespace topx	= sam::tacpg;
-namespace cur	= topx::menu::game;
+namespace cur	= topx::menu::game::map;
 
 namespace {
 	constexpr auto const MATCH = 0;
-	constexpr auto const MENU = "			game			";
+	constexpr auto const MENU = "			MAP			";
 	constexpr auto const MENU_OPTIONS = "[A] map		[S] character		[D] main menu";
 	//constexpr auto const S = "";
 	//constexpr auto const S = "";
 }
 
 cur::Main::Main(topx::input::Main & inputListener,
-				topx::game::Main & game,
-				menu::top::Main & mainMenu)
+				topx::game::Main & game)
 	: inputListener(inputListener)
 	, input(*this)
-	, mainMenu(mainMenu)
 	, game(game) {
 
 }
@@ -40,26 +38,21 @@ cur::Input & cur::Main::getInputListener() {
 	return input;
 }
 
-void cur::Main::goToTopMenu() {
-	game.pause();
-	mainMenu.open();
-	inputListener.setListener(mainMenu.getInputListener());
+void cur::Main::goToGameMenu() {
+	game.getMenu().open();
+	inputListener.setListener(game.getMenu().getInputListener());
 }
 
 void cur::Main::invalidInput() {
 	displayOptions();
 }
 
-void cur::Main::newGame() {
-	game.resetGame();
-}
-
 void cur::Main::openCharacter() {
-
+	game.getMenu().openCharacter();
 }
 
 void cur::Main::openMap() {
-
+	game.getMenu().openMap();
 }
 
 //*****public*****

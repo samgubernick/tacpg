@@ -1,8 +1,9 @@
 
-#ifndef SAM_TACPG_MENU_GAME_HPP_INCLUDED
-#define SAM_TACPG_MENU_GAME_HPP_INCLUDED
+#ifndef SAM_TACPG_MENU_GAME_MAIN_HPP_INCLUDED
+#define SAM_TACPG_MENU_GAME_MAIN_HPP_INCLUDED
 
-#include "input/i_listener.hpp"
+#include "menu/game/action.hpp"
+#include "menu/game/input.hpp"
 
 #include <string>
 
@@ -18,47 +19,32 @@ namespace sam {
 			class Main;
 		}
 		namespace menu {
-			class Main;
-			class Game : public input::IListener {
-			public:
-				enum class Action {
-					turnLeft,
-					turnRight,
-					moveForward,
-					moveBackward,
-					look,
-					use,
-					fire,
-					jump,
-					showBio,
-					showStats,
-					pause,
-					ignore,
+			namespace top {
+				class Main;
+			}
+			namespace game {
+				class Main {
+				public:
+					Main(input::Main & inputListener,
+						 tacpg::game::Main & game,
+						 menu::top::Main & topMenu);
+
+					Input & getInputListener();
+					void invalidInput();
+					void newGame();
+					void open();
+					void openMap();
+					void openCharacter();
+					void goToTopMenu();
+				private:
+					input::Main & inputListener;
+					menu::top::Main & mainMenu;
+					tacpg::game::Main & game;
+					Input input;
+
+					void displayOptions();
 				};
-				enum class State {
-					none,
-					paused,
-					running,
-				};
-
-				Game(input::Main & inputListener,
-					 game::Main & game,
-					 Main & mainMenu);
-
-				void display();
-				State getState();
-				void newGame();
-				Action now(std::string const & key);
-				void receiveInput(std::string const & input);
-			private:
-				State state;
-				input::Main & inputListener;
-				Main & mainMenu;
-				game::Main & game;
-
-				void showBio(character::Main & character);
-				void showStats(character::Main & character);
-			};
+			}
 		}
 	}
 }

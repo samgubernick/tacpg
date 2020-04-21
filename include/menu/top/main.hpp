@@ -1,9 +1,10 @@
 
-#ifndef SAM_TACPG_MENU_MAIN_HPP_INCLUDED
-#define SAM_TACPG_MENU_MAIN_HPP_INCLUDED
+#ifndef SAM_TACPG_MENU_TOP_MAIN_HPP_INCLUDED
+#define SAM_TACPG_MENU_TOP_MAIN_HPP_INCLUDED
 
-#include "input/i_listener.hpp"
 #include "game/main.hpp"
+#include "menu/top/action.hpp"
+#include "menu/top/input.hpp"
 
 #include <string>
 
@@ -13,25 +14,28 @@ namespace sam {
 			class Main;
 		}
 		namespace menu {
-			class Main : public input::IListener {
-				enum class Action {
-					exit,
-					ignore,
-					load,
-					play,
-					save,
+			namespace top {
+				class Main {
+
+				public:
+					Main(input::Main & inputListener);
+
+					Input & getInputListener();
+					void open();
+
+					void exit();
+					void invalidInput();
+					void load();
+					void play();
+					void save();
+				private:
+					input::Main & inputListener;
+					tacpg::game::Main game;
+					Input input;
+
+					void displayOptions();
 				};
-
-			public:
-				Main(input::Main & inputListener);
-
-				void display();
-				Action now(std::string const & key);
-				void receiveInput(std::string const & input);
-			private:
-				input::Main & inputListener;
-				game::Main game;
-			};
+			}
 		}
 	}
 }

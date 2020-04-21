@@ -1,7 +1,7 @@
 
 #include "initialize/main.hpp"
 
-#include "menu/main.hpp"
+#include "menu/top/main.hpp"
 
 #include <iostream>
 
@@ -15,9 +15,9 @@ cur::Main::Main() {
 void cur::Main::now() {
 	std::cout << "Welcome to the game!" << std::endl;
 
-	auto menu = topx::menu::Main(input);
-	menu.display();
+	auto menu = topx::menu::top::Main(input);
+	menu.open();
 
-	input.setListener(menu);
+	input.setListener(menu.getInputListener());
 	input.startListening();
 }

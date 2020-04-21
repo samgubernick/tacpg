@@ -1,15 +1,15 @@
 
-#include "menu/game/input.hpp"
+#include "menu/game/map/input.hpp"
 
-#include "menu/game/main.hpp"
+#include "menu/game/map/main.hpp"
 #include "menu/values.hpp"
 
 #include <string>
 
 namespace topx	= sam::tacpg;
-namespace cur	= topx::menu::game;
+namespace cur	= topx::menu::game::map;
 
-cur::Input::Input(topx::menu::game::Main & menu)
+cur::Input::Input(topx::menu::game::map::Main & menu)
 	: menu(menu) {
 
 }
@@ -17,16 +17,16 @@ cur::Input::Input(topx::menu::game::Main & menu)
 void cur::Input::receiveInput(std::string const & input) {
 	auto const action = getAction(input);
 	switch (action) {
-		case Action::openCharacter: {
+		case Action::character: {
 			menu.openCharacter();
 			break;
 		}
-		case Action::openMap: {
-			menu.openMap();
+		case Action::gameMenu: {
+			menu.goToGameMenu();
 			break;
 		}
-		case Action::pause: {
-			menu.goToTopMenu();
+		case Action::map: {
+			menu.openMap();
 			break;
 		}
 		default: {
@@ -42,13 +42,13 @@ void cur::Input::receiveInput(std::string const & input) {
 
 cur::Action cur::Input::getAction(std::string const & key) const {
 	if (key.compare("a") == values::MATCH) {
-		return Action::openMap;
+		return Action::map;
 	}
-	else if (key.compare("s") == values::MATCH) {
-		return Action::openCharacter;
+	if (key.compare("s") == values::MATCH) {
+		return Action::character;
 	}
 	if (key.compare("d") == values::MATCH) {
-		return Action::pause;
+		return Action::gameMenu;
 	}
 	else {
 		return Action::ignore;

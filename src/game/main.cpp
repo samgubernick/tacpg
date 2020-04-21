@@ -4,8 +4,9 @@
 namespace topx	= sam::tacpg;
 namespace cur	= topx::game;
 
-cur::Main::Main(topx::input::Main & inputListener, topx::menu::Main & mainMenu)
-	: menu(inputListener, *this, mainMenu) {
+cur::Main::Main(topx::input::Main & inputListener, topx::menu::top::Main & mainMenu)
+	: menu(inputListener, *this, mainMenu)
+	, state(State::none) {
 
 }
 
@@ -25,8 +26,16 @@ topx::character::Main & cur::Main::getCurrentCharacter() {
 	return *currentCharacter;
 }
 
-topx::menu::Game & cur::Main::getMenu() {
+topx::menu::game::Main & cur::Main::getMenu() {
 	return menu;
+}
+
+cur::Main::State cur::Main::getState() const {
+	return state;
+}
+
+void cur::Main::pause() {
+	state = State::paused;
 }
 
 void cur::Main::resetGame() {

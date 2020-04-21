@@ -4,7 +4,7 @@
 
 #include "character/main.hpp"
 #include "map/main.hpp"
-#include "menu/game.hpp"
+#include "menu/game/main.hpp"
 
 #include <vector>
 
@@ -13,15 +13,24 @@ namespace sam {
 		namespace game {
 			class Main {
 			public:
-				Main(input::Main & inputListener, menu::Main & mainMenu);
+				enum class State {
+					none,
+					paused,
+					running,
+				};
+
+				Main(input::Main & inputListener, menu::top::Main & mainMenu);
 
 				character::Main & getCurrentCharacter();
-				menu::Game & getMenu();
+				menu::game::Main & getMenu();
+				State getState() const;
+				void pause();
 				void resetGame();
 			private:
 				map::Main map;
-				menu::Game menu;
+				menu::game::Main menu;
 				std::vector<character::Main> characters;
+				State state;
 
 				character::Main * currentCharacter;
 			};

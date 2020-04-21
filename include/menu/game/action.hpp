@@ -7,16 +7,8 @@ namespace sam {
 		namespace menu {
 			namespace game {
 				enum class Action {
-					turnLeft,
-					turnRight,
-					moveForward,
-					moveBackward,
-					look,
-					use,
-					fire,
-					jump,
-					showBio,
-					showStats,
+					openCharacter,
+					openMap,
 					pause,
 					ignore,
 				};
