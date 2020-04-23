@@ -10,7 +10,7 @@
 namespace sam {
 	namespace tacpg {
 		namespace character {
-			class Main {
+			class Main : public map::IMapItem {
 			public:
 				Main();
 

@@ -27,11 +27,13 @@ namespace sam {
 				Cell();
 
 				void attemptToAdd(IMapItem & item);
-				Ground getGroundType();
+				Ground getGroundType() const;
 				std::vector<IMapItem *> & getItems();
+				std::vector<IMapItem *> const & getItems() const;
 				void remove(IMapItem & item);
+				void setGroundType(Ground type);
 			private:
-				Ground ground;
+				Ground groundType;
 				std::vector<IMapItem *> items;
 			};
 		}

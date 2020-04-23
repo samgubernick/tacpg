@@ -4,6 +4,8 @@
 
 #include "menu/game/action.hpp"
 #include "menu/game/input.hpp"
+#include "menu/game/character/main.hpp"
+#include "menu/game/map/main.hpp"
 
 #include <string>
 
@@ -42,6 +44,9 @@ namespace sam {
 					menu::top::Main & mainMenu;
 					tacpg::game::Main & game;
 					Input input;
+
+					character::Main character;
+					map::Main map;
 
 					void displayOptions();
 				};

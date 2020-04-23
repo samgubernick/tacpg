@@ -16,15 +16,21 @@ namespace sam {
 				public:
 					Input(game::Main & menu);
 
+					std::string const & getDisplayKeyCharacter() const;
+					std::string const & getDisplayKeyMap() const;
+					std::string const & getDisplayKeyBack() const;
 					std::string const & getKeyCharacter() const;
 					std::string const & getKeyMap() const;
-					std::string const & getKeyTopMenu() const ;
+					std::string const & getKeyBack() const ;
 					void receiveInput(std::string const & input);
 				private:
 					game::Main & menu;
 					std::string keyCharacter;
 					std::string keyMap;
-					std::string keyTopMenu;
+					std::string keyBack;
+					std::string displayKeyCharacter;
+					std::string displayKeyMap;
+					std::string displayKeyBack;
 
 					Action getAction(std::string const & key) const;
 				};

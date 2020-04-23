@@ -1,5 +1,5 @@
 
-#include "menu/values.hpp"
+#include "utility/values.hpp"
 
 #include "input/main.hpp"
 
@@ -7,6 +7,6 @@
 #include <string>
 
 namespace topx	= sam::tacpg;
-namespace cur	= topx::menu::values;
+namespace cur	= topx::utility::values;
 
-int const cur::MATCH			= 0;
+int const cur::MATCH	= 0;

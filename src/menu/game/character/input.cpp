@@ -2,7 +2,7 @@
 #include "menu/game/character/input.hpp"
 
 #include "menu/game/character/main.hpp"
-#include "menu/values.hpp"
+#include "utility/values.hpp"
 
 #include <string>
 
@@ -12,6 +12,14 @@ namespace cur	= topx::menu::game::character;
 cur::Input::Input(topx::menu::game::character::Main & menu)
 	: menu(menu) {
 
+}
+
+std::string const & cur::Input::getDisplayKeyBack() const {
+	return displayKeyBack;
+}
+
+std::string const & cur::Input::getKeyBack() const {
+	return keyBack;
 }
 
 void cur::Input::receiveInput(std::string const & input) {
@@ -65,31 +73,37 @@ void cur::Input::receiveInput(std::string const & input) {
 //*****private****
 
 cur::Action cur::Input::getAction(std::string const & key) const {
-	if (key.compare("a") == values::MATCH) {
+	if (key.compare("a") == utility::values::MATCH) {
 		return Action::turnLeft;
 	}
-	else if (key.compare("d") == values::MATCH) {
+
+	if (key.compare("d") == utility::values::MATCH) {
 		return Action::turnRight;
 	}
-	else if (key.compare("w") == values::MATCH) {
+
+	if (key.compare("w") == utility::values::MATCH) {
 		return Action::moveForward;
 	}
-	else if (key.compare("s") == values::MATCH) {
+
+	if (key.compare("s") == utility::values::MATCH) {
 		return Action::moveBackward;
 	}
-	else if (key.compare("r") == values::MATCH) {
+
+	if (key.compare("r") == utility::values::MATCH) {
 		return Action::look;
 	}
-	else if (key.compare("t") == values::MATCH) {
+
+	if (key.compare("t") == utility::values::MATCH) {
 		return Action::use;
 	}
-	else if (key.compare("z") == values::MATCH) {
+
+	if (key.compare("z") == utility::values::MATCH) {
 		return Action::gameMenu;
 	}
-	else if (key.compare("q") == values::MATCH) {
+
+	if (key.compare("q") == utility::values::MATCH) {
 		return Action::showBio;
 	}
-	else {
-		return Action::ignore;
-	}
+
+	return Action::ignore;
 }

@@ -26,7 +26,7 @@ namespace sam {
 						Main(input::Main & inputListener,
 							 tacpg::game::Main & game);
 
-
+						void close();
 						Input & getInputListener();
 						void invalidInput();
 						void open();

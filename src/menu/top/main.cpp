@@ -3,7 +3,7 @@
 
 #include "input/main.hpp"
 #include "menu/borders.hpp"
-#include "menu/values.hpp"
+#include "utility/values.hpp"
 
 #include <iostream>
 #include <string>
@@ -13,7 +13,7 @@ namespace cur	= topx::menu::top;
 
 namespace {
 	constexpr auto const MENU			= "main menu";
-	constexpr auto const ITEM_EXIT		= "exit";
+	constexpr auto const ITEM_EXIT		= "quit";
 	constexpr auto const ITEM_LOAD		= "load";
 	constexpr auto const ITEM_PLAY		= "play";
 	constexpr auto const ITEM_SAVE		= "save";
@@ -93,9 +93,9 @@ void cur::Main::save() {
 
 void cur::Main::displayOptions() {
 	std::cout
-		<< "[" << input.getKeyPlay() << "] " << ITEM_PLAY << ITEM_SPACER
-		<< "[" << input.getKeyLoad() << "] " << ITEM_LOAD << ITEM_SPACER
-		<< "[" << input.getKeySave() << "] " << ITEM_SAVE << ITEM_SPACER
-		<< "[" << input.getKeyExit() << "] " << ITEM_EXIT << ITEM_SPACER
+		<< "[" << input.getDisplayKeyPlay() << "] " << ITEM_PLAY << ITEM_SPACER
+		<< "[" << input.getDisplayKeyLoad() << "] " << ITEM_LOAD << ITEM_SPACER
+		<< "[" << input.getDisplayKeySave() << "] " << ITEM_SAVE << ITEM_SPACER
+		<< "[" << input.getDisplayKeyExit() << "] " << ITEM_EXIT << ITEM_SPACER
 		<< std::endl << ">> ";
 }

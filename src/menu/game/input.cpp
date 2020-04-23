@@ -2,7 +2,7 @@
 #include "menu/game/input.hpp"
 
 #include "menu/game/main.hpp"
-#include "menu/values.hpp"
+#include "utility/values.hpp"
 
 #include <string>
 
@@ -13,8 +13,23 @@ cur::Input::Input(topx::menu::game::Main & menu)
 	: menu(menu)
 	, keyCharacter("c")
 	, keyMap("m")
-	, keyTopMenu("e") {
+	, keyBack("q")
+	, displayKeyCharacter("C")
+	, displayKeyMap("M")
+	, displayKeyBack("Q") {
 
+}
+
+std::string const & cur::Input::getDisplayKeyCharacter() const {
+	return displayKeyCharacter;
+}
+
+std::string const & cur::Input::getDisplayKeyMap() const {
+	return displayKeyMap;
+}
+
+std::string const & cur::Input::getDisplayKeyBack() const {
+	return displayKeyBack;
 }
 
 std::string const & cur::Input::getKeyCharacter() const {
@@ -25,8 +40,8 @@ std::string const & cur::Input::getKeyMap() const {
 	return keyMap;
 }
 
-std::string const & cur::Input::getKeyTopMenu() const {
-	return keyTopMenu;
+std::string const & cur::Input::getKeyBack() const {
+	return keyBack;
 }
 
 void cur::Input::receiveInput(std::string const & input) {
@@ -40,7 +55,7 @@ void cur::Input::receiveInput(std::string const & input) {
 			menu.openMap();
 			break;
 		}
-		case Action::pause: {
+		case Action::back: {
 			menu.goToTopMenu();
 			break;
 		}
@@ -56,16 +71,17 @@ void cur::Input::receiveInput(std::string const & input) {
 //*****private****
 
 cur::Action cur::Input::getAction(std::string const & key) const {
-	if (key.compare(keyMap) == values::MATCH) {
+	if (key.compare(keyMap) == utility::values::MATCH) {
 		return Action::openMap;
 	}
-	else if (key.compare(keyCharacter) == values::MATCH) {
+
+	if (key.compare(keyCharacter) == utility::values::MATCH) {
 		return Action::openCharacter;
 	}
-	if (key.compare(keyTopMenu) == values::MATCH) {
-		return Action::pause;
+
+	if (key.compare(keyBack) == utility::values::MATCH) {
+		return Action::back;
 	}
-	else {
-		return Action::ignore;
-	}
+	
+	return Action::ignore;
 }

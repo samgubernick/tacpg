@@ -4,7 +4,8 @@
 namespace topx	= sam::tacpg;
 namespace cur	= topx::character;
 
-cur::Main::Main() {
+cur::Main::Main()
+	: bio(*this) {
 
 }
 
@@ -18,7 +19,7 @@ cur::Stats & cur::Main::getStats() {
 
 void cur::Main::move(double angle) {
 
-}	
+}
 
 void cur::Main::onCollect(topx::map::IMapItem & other) {
 

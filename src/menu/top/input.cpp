@@ -2,7 +2,8 @@
 #include "menu/top/input.hpp"
 
 #include "menu/top/main.hpp"
-#include "menu/values.hpp"
+#include "utility/text.hpp"
+#include "utility/values.hpp"
 
 #include <string>
 
@@ -11,11 +12,30 @@ namespace cur	= topx::menu::top;
 
 cur::Input::Input(topx::menu::top::Main & menu)
 	: menu(menu)
-	, keyExit("e")
+	, keyExit("q")
 	, keyLoad("l")
 	, keyPlay("p")
-	, keySave("s") {
+	, keySave("s")
+	, displayKeyExit("Q")
+	, displayKeyLoad("L")
+	, displayKeyPlay("P")
+	, displayKeySave("S") {
+}
 
+std::string const & cur::Input::getDisplayKeyExit() const {
+	return displayKeyExit;
+}
+
+std::string const & cur::Input::getDisplayKeyLoad() const {
+	return displayKeyLoad;
+}
+
+std::string const & cur::Input::getDisplayKeyPlay() const {
+	return displayKeyPlay;
+}
+
+std::string const & cur::Input::getDisplayKeySave() const {
+	return displayKeySave;
 }
 
 std::string const & cur::Input::getKeyExit() const {
@@ -65,16 +85,16 @@ void cur::Input::receiveInput(std::string const & input) {
 //*****private****
 
 cur::Action cur::Input::getAction(std::string const & key) const {
-	if (key.compare(keyExit) == values::MATCH) {
+	if (key.compare(keyExit) == utility::values::MATCH) {
 		return Action::exit;
 	}
-	else if (key.compare(keyPlay) == values::MATCH) {
+	else if (key.compare(keyPlay) == utility::values::MATCH) {
 		return Action::play;
 	}
-	else if (key.compare(keySave) == values::MATCH) {
+	else if (key.compare(keySave) == utility::values::MATCH) {
 		return Action::save;
 	}
-	else if (key.compare(keyLoad) == values::MATCH) {
+	else if (key.compare(keyLoad) == utility::values::MATCH) {
 		return Action::load;
 	}
 	else {

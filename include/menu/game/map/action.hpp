@@ -8,9 +8,9 @@ namespace sam {
 			namespace game {
 				namespace map {
 					enum class Action {
-						character,
+						show,
 						gameMenu,
-						map,
+						what,
 						ignore,
 					};
 				}

@@ -10,6 +10,10 @@ cur::Main::Main(topx::input::Main & inputListener, topx::menu::top::Main & mainM
 
 }
 
+std::vector<topx::character::Main> & cur::Main::getCharacters() {
+	return characters;
+}
+
 topx::character::Main & cur::Main::getCurrentCharacter() {
 	if (currentCharacter != nullptr) {
 		return *currentCharacter;
@@ -26,6 +30,10 @@ topx::character::Main & cur::Main::getCurrentCharacter() {
 	return *currentCharacter;
 }
 
+topx::map::Main & cur::Main::getMap() {
+	return map;
+}
+
 topx::menu::game::Main & cur::Main::getMenu() {
 	return menu;
 }
@@ -40,12 +48,14 @@ void cur::Main::pause() {
 
 void cur::Main::resetGame() {
 	map.clear();
+	map.setSize(map::PresetSize::small);
 
-	map.setSize(map::Main::Size::small);
 	currentCharacter = &characters.emplace_back();
 	auto & character = *currentCharacter;
 	auto & bio = character.getBio();
 	bio.setName("Tim", "Roberts");
 	bio.setGender(biography::Gender::male);
 	bio.setAge(biography::Age(1960, data::Month::aug, 20));
+
+	map.getCell(5).attemptToAdd(character);
 }

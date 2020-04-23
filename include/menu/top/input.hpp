@@ -16,6 +16,10 @@ namespace sam {
 				public:
 					Input(Main & menu);
 
+					std::string const & getDisplayKeyExit() const;
+					std::string const & getDisplayKeyLoad() const;
+					std::string const & getDisplayKeyPlay() const;
+					std::string const & getDisplayKeySave() const;
 					std::string const & getKeyExit() const;
 					std::string const & getKeyLoad() const;
 					std::string const & getKeyPlay() const;
@@ -27,6 +31,10 @@ namespace sam {
 					std::string keyLoad;
 					std::string keyPlay;
 					std::string keySave;
+					std::string displayKeyExit;
+					std::string displayKeyLoad;
+					std::string displayKeyPlay;
+					std::string displayKeySave;
 
 					Action getAction(std::string const & key) const;
 				};
