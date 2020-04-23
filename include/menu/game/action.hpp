@@ -7,9 +7,9 @@ namespace sam {
 		namespace menu {
 			namespace game {
 				enum class Action {
+					back,
 					openCharacter,
 					openMap,
-					pause,
 					ignore,
 				};
 			}

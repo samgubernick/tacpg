@@ -3,6 +3,7 @@
 
 #include "game/main.hpp"
 #include "input/main.hpp"
+#include "menu/borders.hpp"
 #include "menu/game/main.hpp"
 #include "output/age.hpp"
 #include "output/name.hpp"
@@ -14,8 +15,7 @@ namespace topx	= sam::tacpg;
 namespace cur	= topx::menu::game::character;
 
 namespace {
-	constexpr auto const MATCH = 0;
-	constexpr auto const MENU = "			character			";
+	constexpr auto const NAME = "character";
 	constexpr auto const MENU_OPTIONS = "[A] bio		[S] actions		[Q] switch prev		[W] switch next		[D] game menu";
 	//constexpr auto const MENU_OPTIONS = "[A] move		[S] attack		[Q] collect		[E] items		[W] drop		[D character menu]";
 	//constexpr auto const MENU_OPTIONS = "[A] turn left		[D] turn right		[W] forward		[S] backward		[Z] character menu";
@@ -27,8 +27,9 @@ namespace {
 	constexpr auto const USE = "Using";
 	constexpr auto const BIO = "***                Bio                 ***";
 	constexpr auto const STATS = "___Stats___";
-	constexpr auto const NAME = "Name: ";
-	constexpr auto const AGE = "Age: ";
+	constexpr auto const TEXT_NAME = "Name: ";
+	constexpr auto const TEXT_AGE = "Age: ";
+	constexpr auto const ITEM_SPACER	= "		";
 	//constexpr auto const S = "";
 	//constexpr auto const S = "";
 }
@@ -41,8 +42,13 @@ cur::Main::Main(topx::input::Main & inputListener,
 
 }
 
+void cur::Main::close() {
+	borders::showBottom();
+}
+
 void cur::Main::open() {
-	std::cout << std::endl << std::endl << MENU << std::endl;
+	borders::showTop(NAME);
+	displayOptions();
 }
 
 cur::Input & cur::Main::getInputListener() {
@@ -50,6 +56,7 @@ cur::Input & cur::Main::getInputListener() {
 }
 
 void cur::Main::goToGameMenu() {
+	close();
 	game.getMenu().open();
 	inputListener.setListener(game.getMenu().getInputListener());
 }
@@ -101,8 +108,8 @@ void cur::Main::receiveInput(std::string const & input) {
 void cur::Main::showBio(topx::character::Main & character) {
 	auto const & bio = character.getBio();
 	std::cout << std::endl << std::endl << BIO << std::endl
-		<< "      " << NAME << output::name(bio.getName(), bio.getGender()) << std::endl
-		<< "      " << AGE << output::age(bio.getAge()) << std::endl;
+		<< "      " << TEXT_NAME << output::name(bio.getName(), bio.getGender()) << std::endl
+		<< "      " << TEXT_AGE << output::age(bio.getAge()) << std::endl;
 
 	displayOptions();
 }
@@ -119,5 +126,5 @@ void cur::Main::showStats(topx::character::Main & character) {
 //*****private****
 
 void cur::Main::displayOptions() {
-	std::cout << std::endl << std::endl << MENU_OPTIONS << std::endl << ">> ";
+	borders::showTop(NAME);
 }

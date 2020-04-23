@@ -12,9 +12,10 @@
 namespace sam {
 	namespace tacpg {
 		namespace character {
+			class Main;
 			class Bio {
 			public:
-				Bio();
+				Bio(Main & main);
 
 				biography::Age const & getAge() const;
 				biography::Gender getGender() const;
@@ -30,6 +31,8 @@ namespace sam {
 				biography::Gender gender;
 				biography::Name name;
 				biography::Nationality nationality;
+
+				Main & character;
 			};
 		}
 	}

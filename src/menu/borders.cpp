@@ -1,8 +1,6 @@
 
 #include "menu/borders.hpp"
 
-#include "menu/values.hpp"
-
 #include <iostream>
 #include <string>
 

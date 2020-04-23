@@ -22,6 +22,8 @@ namespace sam {
 				Main(input::Main & inputListener, menu::top::Main & mainMenu);
 
 				character::Main & getCurrentCharacter();
+				std::vector<character::Main> & getCharacters();
+				map::Main & getMap();
 				menu::game::Main & getMenu();
 				State getState() const;
 				void pause();

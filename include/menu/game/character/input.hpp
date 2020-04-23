@@ -17,9 +17,13 @@ namespace sam {
 					public:
 						Input(character::Main & menu);
 
+						std::string const & getDisplayKeyBack() const;
+						std::string const & getKeyBack() const;
 						void receiveInput(std::string const & input);
 					private:
 						character::Main & menu;
+						std::string keyBack;
+						std::string displayKeyBack;
 
 						Action getAction(std::string const & key) const;
 					};

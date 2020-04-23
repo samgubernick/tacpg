@@ -15,6 +15,9 @@ namespace sam {
 		namespace input {
 			class Main;
 		}
+		namespace map {
+			struct Size;
+		}
 		namespace menu {
 			namespace game {
 				namespace map {
@@ -24,13 +27,14 @@ namespace sam {
 							 tacpg::game::Main & game);
 
 
+						void close();
 						Input & getInputListener();
 						void invalidInput();
 
 						void goToGameMenu();
 						void open();
-						void openCharacter();
-						void openMap();
+						void showMap();
+						void whatIs(tacpg::map::Size const & cell);
 					private:
 						input::Main & inputListener;
 						tacpg::game::Main & game;

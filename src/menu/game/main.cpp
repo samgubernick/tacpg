@@ -5,10 +5,8 @@
 #include "input/main.hpp"
 #include "menu/borders.hpp"
 #include "menu/top/main.hpp"
-#include "menu/values.hpp"
 #include "output/age.hpp"
 #include "output/name.hpp"
-
 #include <iostream>
 #include <string>
 
@@ -31,7 +29,9 @@ cur::Main::Main(topx::input::Main & inputListener,
 	: inputListener(inputListener)
 	, input(*this)
 	, mainMenu(mainMenu)
-	, game(game) {
+	, game(game)
+	, character(inputListener, game)
+	, map(inputListener, game) {
 
 }
 
@@ -65,11 +65,17 @@ void cur::Main::newGame() {
 }
 
 void cur::Main::openCharacter() {
+	close();
 
+	character.open();
+	inputListener.setListener(character.getInputListener());
 }
 
 void cur::Main::openMap() {
+	close();
 
+	map.open();
+	inputListener.setListener(map.getInputListener());
 }
 
 //*****public*****
@@ -78,8 +84,8 @@ void cur::Main::openMap() {
 
 void cur::Main::displayOptions() {
 	std::cout
-		<< "[" << input.getKeyMap() << "] " << ITEM_MAP << ITEM_SPACER
-		<< "[" << input.getKeyCharacter() << "] " << ITEM_CHARACTER << ITEM_SPACER
-		<< "[" << input.getKeyTopMenu() << "] " << ITEM_TOP_MENU << ITEM_SPACER
+		<< "[" << input.getDisplayKeyMap() << "] " << ITEM_MAP << ITEM_SPACER
+		<< "[" << input.getDisplayKeyCharacter() << "] " << ITEM_CHARACTER << ITEM_SPACER
+		<< "[" << input.getDisplayKeyBack() << "] " << ITEM_TOP_MENU << ITEM_SPACER
 		<< std::endl << ">> ";
 }
